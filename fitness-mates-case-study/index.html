@@ -1,0 +1,2104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Fitness Mates — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FBFAF6;
+    --bg-cream: #F1E8D4;
+    --bg-cream-deep: #E9DCC0;
+    --bg-pay: #FBF8F2;
+    --bg-dark: #131211;
+    --bg-darker: #0A0908;
+    --ink: #131211;
+    --ink-2: #2A2825;
+    --ink-muted: #6E6A63;
+    --ink-soft: #A09A8E;
+    --line: #E4DECC;
+    --line-soft: #EFEADC;
+    --line-cream: #D6CDB5;
+    --accent: #FF5A1F;
+    --accent-deep: #C53D0A;
+    --accent-soft: #FFEAD9;
+    --good: #2F7D4F;
+
+    --container: 1440px;
+    --content: 1248px;
+    --pad-x: 96px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img { display: block; max-width: 100%; }
+
+  .page { width: 100%; max-width: var(--container); margin: 0 auto; background: var(--bg); overflow: hidden; }
+  .wrap { width: 100%; max-width: var(--content); margin: 0 auto; padding: 0 var(--pad-x); position: relative; }
+
+  h1, h2, h3, h4, h5 { font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+  h1 { font-size: 96px; line-height: 1.0; letter-spacing: -0.038em; }
+  h2 { font-size: 60px; line-height: 1.06; letter-spacing: -0.03em; }
+  h3 { font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; }
+  h4 { font-size: 22px; line-height: 1.3; font-weight: 600; }
+  h5 { font-size: 16px; line-height: 1.4; font-weight: 600; }
+  p { font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+  .lead { font-size: 21px; line-height: 1.5; color: var(--ink-2); letter-spacing: -0.005em; }
+  .small { font-size: 14px; color: var(--ink-muted); }
+  .caption { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  em.accent { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; color: var(--accent); }
+  em.serif { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; color: inherit; }
+
+  section { position: relative; padding: 120px 0; border-bottom: 1px solid var(--line); }
+  section.cream { background: var(--bg-cream); border-bottom-color: var(--line-cream); }
+  section.dark { background: var(--bg-dark); color: #fff; border-bottom: none; }
+  section.dark h1, section.dark h2, section.dark h3, section.dark h4 { color: #fff; }
+  section.dark p { color: rgba(255,255,255,0.75); }
+
+  .section-head { margin-bottom: 72px; max-width: 920px; }
+  .section-head .num {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin-bottom: 28px;
+  }
+  .section-head .num .bar { width: 36px; height: 1px; background: var(--ink-muted); }
+  .section-head .abstract { margin-top: 24px; font-size: 21px; line-height: 1.5; color: var(--ink-2); max-width: 760px; }
+  section.dark .section-head .num { color: rgba(255,255,255,0.5); }
+  section.dark .section-head .num .bar { background: rgba(255,255,255,0.4); }
+  section.dark .section-head .abstract { color: rgba(255,255,255,0.7); }
+
+  /* ─── Verdict Bar ─────────────────────────────────────── */
+  .verdict-bar {
+    background: var(--ink);
+    color: #fff;
+    padding: 16px var(--pad-x);
+    display: flex; justify-content: center; align-items: center; gap: 24px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .verdict-bar .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #3DD17B; display: inline-block; margin-right: 8px; vertical-align: 1px; }
+  .verdict-bar .sep { opacity: 0.4; }
+  .verdict-bar .accent { color: var(--accent); }
+
+  /* ─── 01 Cover ────────────────────────────────────────── */
+  .cover { padding: 96px 0 64px; border-bottom: none; }
+  .cover-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px; background: var(--accent-soft); color: var(--accent-deep);
+    border-radius: 999px; font-weight: 600; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+  .cover-eyebrow .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+  .cover h1 { font-size: 124px; line-height: 0.96; letter-spacing: -0.045em; margin-bottom: 32px; }
+  .cover h1 em {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic; font-weight: 500; color: var(--accent);
+  }
+  .cover-lead { font-size: 22px; line-height: 1.5; color: var(--ink-2); max-width: 560px; }
+
+  .meta-strip {
+    margin-top: 56px;
+    display: grid; grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  .meta-strip .meta { padding: 0 32px 0 0; border-right: 1px solid var(--line); }
+  .meta-strip .meta:last-child { border-right: none; }
+  .meta .caption { display: block; margin-bottom: 6px; }
+  .meta .val { font-weight: 600; color: var(--ink); font-size: 15px; }
+
+  .cover-hero {
+    margin-top: 96px; padding: 48px;
+    background: var(--bg-cream); border-radius: 24px;
+    display: grid; grid-template-columns: 1fr 2.5fr; gap: 48px; align-items: center;
+  }
+  .cover-hero .device-pill {
+    display: inline-flex; padding: 6px 14px; background: #fff;
+    border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .cover-hero .device-frame {
+    border-radius: 24px; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  }
+  .cover-hero .phone-frame { aspect-ratio: 9/19.5; }
+  .cover-hero .laptop-frame { aspect-ratio: 16/10; border-radius: 12px; }
+
+  .outcome-strip {
+    margin-top: 40px; padding-top: 32px;
+    border-top: 1px solid var(--ink);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  }
+  .outcome-cell { padding-right: 32px; border-right: 1px solid var(--line); }
+  .outcome-cell:last-child { border-right: none; }
+  .outcome-cell .big {
+    font-size: 64px; font-weight: 700; line-height: 1.0;
+    letter-spacing: -0.04em; color: var(--ink); margin-bottom: 16px;
+  }
+  .outcome-cell .big em {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-weight: 400; color: var(--accent); font-size: 0.6em;
+  }
+  .outcome-cell h4 { font-size: 16px; margin-bottom: 6px; }
+  .outcome-cell .desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+
+  /* ─── Drop cap + Brief ────────────────────────────────── */
+  .brief-grid {
+    display: grid; grid-template-columns: 5fr 7fr; gap: 96px; align-items: start;
+  }
+  .brief-img {
+    aspect-ratio: 4/5; border-radius: 24px; background: var(--bg-cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; letter-spacing: 0.1em; color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .brief-body p:first-of-type::first-letter {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 400;
+    font-size: 96px; line-height: 0.85; float: left;
+    padding: 6px 14px 0 0; color: var(--accent);
+  }
+  .brief-body p { font-size: 18px; line-height: 1.6; margin-bottom: 24px; color: var(--ink-2); }
+  .brief-pullquote {
+    margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line);
+    font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-style: italic;
+    color: var(--ink); line-height: 1.45;
+  }
+  .brief-pullquote .who {
+    display: block; font-family: 'Inter', sans-serif; font-style: normal;
+    font-size: 12px; color: var(--ink-muted); letter-spacing: 0.16em;
+    text-transform: uppercase; margin-top: 16px; font-weight: 600;
+  }
+
+  /* ─── Product leadership / Decisions ─────────────────── */
+  .decisions-body {
+    display: grid; grid-template-columns: 7fr 5fr; gap: 80px; align-items: start;
+  }
+  .decisions-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .decision-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .decision-card.full { grid-column: 1 / -1; }
+  .decision-card .num {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 24px; font-weight: 500; color: var(--accent);
+    line-height: 1; margin-bottom: 10px;
+  }
+  .decision-card h4 { font-size: 17px; line-height: 1.3; margin-bottom: 10px; letter-spacing: -0.3px; }
+  .decision-card p { font-size: 13px; line-height: 1.55; color: var(--ink-2); margin-bottom: 12px; }
+  .decision-card .meta { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); }
+
+  .decisions-visual {
+    position: sticky; top: 32px;
+  }
+  .hero-screenshot {
+    position: relative; aspect-ratio: 4/3; border-radius: 14px;
+    background: var(--bg-cream); border: 1px solid var(--line-cream);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  .hero-screenshot .chip {
+    position: absolute; top: 12px; left: 12px;
+    background: #fff; padding: 5px 10px; border-radius: 999px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .hero-screenshot .pin {
+    position: absolute; bottom: 12px; left: 12px;
+    background: var(--accent); color: #fff; padding: 5px 10px;
+    border-radius: 999px; font-size: 9px; font-weight: 600;
+    letter-spacing: 0.10em; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .hero-screenshot .pin::before {
+    content: ""; width: 5px; height: 5px; background: #fff; border-radius: 50%;
+  }
+  .supporting-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
+  }
+  .supporting-shot {
+    aspect-ratio: 3/2; border-radius: 8px;
+    background: var(--bg-cream); border: 1px solid var(--line-cream);
+    position: relative;
+  }
+  .supporting-shot .chip {
+    position: absolute; top: 8px; left: 8px;
+    background: #fff; padding: 4px 8px; border-radius: 999px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .decisions-caption {
+    margin-top: 12px; font-size: 11px; color: var(--ink-muted); line-height: 1.4;
+  }
+  .decisions-thesis {
+    margin-top: 96px; padding-top: 48px; border-top: 1px solid var(--ink);
+  }
+  .decisions-thesis .eb {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+  }
+  .decisions-thesis .eb .bar { width: 28px; height: 1px; background: var(--accent); }
+  .decisions-thesis .thesis-text {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 32px; line-height: 1.25; color: var(--ink);
+    max-width: 1100px; letter-spacing: -0.012em;
+  }
+
+  /* ─── Challenge ──────────────────────────────────────── */
+  .challenge-stats {
+    display: grid; grid-template-columns: 7fr 5fr; gap: 96px; align-items: start;
+  }
+  .stat-hero { border-top: 1px solid var(--ink); padding-top: 40px; }
+  .stat-hero .mega {
+    font-size: 200px; line-height: 0.88; font-weight: 700;
+    letter-spacing: -0.06em; color: var(--ink); margin-bottom: 24px;
+  }
+  .stat-hero .mega em {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-weight: 400; color: var(--accent); font-size: 0.5em;
+  }
+  .stat-hero p { font-size: 17px; max-width: 480px; }
+  .stat-side .stat { padding: 28px 0; border-top: 1px solid var(--line); }
+  .stat-side .stat:last-child { border-bottom: 1px solid var(--line); }
+  .stat-side .stat .num {
+    font-size: 56px; line-height: 1; font-weight: 700;
+    letter-spacing: -0.04em; margin-bottom: 12px; color: var(--ink);
+  }
+  .stat-side .stat .num em {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 400; color: var(--accent); font-size: 0.7em;
+  }
+  .stat-side .stat p { font-size: 14px; }
+
+  /* ─── Research / Quote wall ──────────────────────────── */
+  .quote-wall {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .quote-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+  }
+  .quote-card .theme {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent-deep); margin-bottom: 18px;
+  }
+  .quote-card .quote {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 22px; line-height: 1.4; color: var(--ink);
+    letter-spacing: -0.02em; flex: 1;
+  }
+  .quote-card .source {
+    margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--line-soft);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  .research-footer {
+    margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--ink);
+  }
+  .research-footer .methods {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink); margin-bottom: 12px;
+  }
+  .research-footer .provenance { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+
+  /* ─── Problem (orange tentpole) ──────────────────────── */
+  .problem-section { background: var(--accent); color: #fff; padding: 168px 0; border-bottom: none; }
+  .problem-section .section-head .num { color: rgba(255,255,255,0.7); }
+  .problem-section .section-head .num .bar { background: rgba(255,255,255,0.6); }
+  .problem-section h2 { color: #fff; }
+  .problem-quote {
+    font-family: 'Fraunces', Georgia, serif; font-size: 56px;
+    line-height: 1.12; letter-spacing: -0.025em;
+    color: #fff; max-width: 1100px; margin-bottom: 64px;
+  }
+  .problem-quote strong {
+    font-style: italic; font-weight: 500;
+    background: rgba(255,255,255,0.15); padding: 0 8px; border-radius: 4px;
+  }
+  .hmw {
+    padding-top: 56px; border-top: 1px solid rgba(255,255,255,0.3);
+    display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start;
+  }
+  .hmw .label {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 22px; color: rgba(255,255,255,0.85); font-weight: 400;
+  }
+  .hmw p {
+    font-family: 'Fraunces', Georgia, serif; font-size: 32px;
+    line-height: 1.35; color: #fff; font-weight: 400; font-style: italic;
+  }
+
+  /* ─── Personas ───────────────────────────────────────── */
+  .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .persona {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    overflow: hidden;
+  }
+  .persona .photo {
+    aspect-ratio: 16/9; background: var(--bg-cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; letter-spacing: 0.1em; color: var(--ink-muted);
+    text-transform: uppercase; position: relative;
+  }
+  .persona .photo .badge {
+    position: absolute; top: 20px; left: 20px;
+    padding: 5px 11px; border-radius: 999px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .persona.demand .photo .badge { background: var(--accent); color: #fff; }
+  .persona.supply .photo .badge { background: rgba(255,255,255,0.95); color: var(--ink); }
+  .persona .body { padding: 32px 36px 36px; }
+  .persona .head-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 20px; border-bottom: 1px solid var(--line-soft); margin-bottom: 24px;
+  }
+  .persona h3 { font-size: 28px; margin-bottom: 4px; }
+  .persona .sub { color: var(--ink-muted); font-size: 14px; }
+  .persona .age {
+    font-family: 'Fraunces', Georgia, serif; font-size: 48px;
+    font-weight: 400; color: var(--accent); font-style: italic; line-height: 1;
+  }
+  .persona dl {
+    display: grid; grid-template-columns: 110px 1fr;
+    row-gap: 16px; column-gap: 20px; font-size: 14px;
+  }
+  .persona dt {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  .persona dd { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+  .persona .story {
+    margin-top: 24px; padding: 22px 24px; background: var(--bg-cream); border-radius: 12px;
+  }
+  .persona .story strong {
+    display: block; font-size: 11px; color: var(--accent-deep);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; font-weight: 700;
+  }
+  .persona .story p { font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+
+  /* ─── IA & Flows ─────────────────────────────────────── */
+  .flow-block {
+    background: #fff; border: 1px solid var(--line-cream);
+    border-radius: 20px; padding: 56px; margin-bottom: 24px;
+  }
+  .flow-head {
+    display: flex; justify-content: space-between; align-items: end;
+    margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--line-soft);
+  }
+  .flow-head .label-line {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-deep); margin-bottom: 10px; font-weight: 700;
+  }
+  .flow-head h4 { font-size: 24px; }
+  .flow-head .tgt {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 16px; color: var(--ink-2); text-align: right;
+  }
+  .flow-head .tgt strong {
+    display: block; color: var(--accent); font-weight: 500;
+    font-size: 20px; margin-top: 4px;
+  }
+  .flow-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  }
+  .flow-step {
+    background: var(--bg); border: 1px solid var(--line-cream);
+    border-radius: 12px; padding: 20px;
+  }
+  .flow-step .s-num {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 14px; color: var(--accent); margin-bottom: 10px; font-weight: 500;
+  }
+  .flow-step h5 { font-size: 15px; margin-bottom: 8px; }
+  .flow-step p { font-size: 12.5px; color: var(--ink-muted); line-height: 1.45; }
+
+  /* ─── The System ─────────────────────────────────────── */
+  .dim-strip {
+    display: grid; grid-template-columns: 440px 1fr; gap: 64px;
+    padding: 36px 0; border-top: 1px solid var(--line); align-items: center;
+  }
+  .dim-strip:last-of-type { border-bottom: 1px solid var(--line); }
+  .dim-strip .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent-deep); margin-bottom: 8px;
+  }
+  .dim-strip h3 { font-size: 32px; margin-bottom: 12px; }
+  .dim-strip p { font-size: 15px; line-height: 1.55; }
+  .dim-chips { display: flex; gap: 14px; }
+  .dim-chip {
+    flex: 1; background: var(--bg); border: 1px solid var(--line-cream);
+    border-radius: 14px; padding: 22px;
+  }
+  .dim-chip .n {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 28px; color: var(--accent); margin-bottom: 8px;
+  }
+  .dim-chip h5 { font-size: 17px; margin-bottom: 6px; letter-spacing: -0.4px; }
+  .dim-chip .sub { font-size: 12.5px; color: var(--ink-muted); }
+
+  /* ─── Parity hero ────────────────────────────────────── */
+  .parity-hero {
+    margin-top: 96px; padding: 48px;
+    background: var(--bg-cream); border-radius: 24px;
+    display: grid; grid-template-columns: 1fr 2.5fr; gap: 48px; align-items: center;
+  }
+  .parity-pill {
+    display: inline-flex; padding: 6px 14px; background: #fff;
+    border-radius: 999px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .parity-frame {
+    border-radius: 24px; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  }
+  .parity-phone { aspect-ratio: 9/19.5; }
+  .parity-laptop { aspect-ratio: 16/10; border-radius: 12px; }
+  .parity-head .eb {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent-deep); margin-bottom: 14px;
+  }
+  .parity-head h3 { font-size: 32px; margin-bottom: 14px; }
+  .parity-head p { font-size: 16px; line-height: 1.55; max-width: 700px; }
+
+  /* ─── Build Economy ──────────────────────────────────── */
+  .build-economy {
+    background: #fff; border: 1px solid var(--line); border-radius: 24px;
+    padding: 48px;
+  }
+  .be-head { margin-bottom: 48px; }
+  .be-head .eb {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px;
+  }
+  .be-head .eb .bar { width: 36px; height: 1px; background: var(--ink-muted); }
+  .be-head h3 { font-size: 36px; margin-bottom: 8px; }
+  .be-head p { font-size: 17px; color: var(--ink-2); }
+
+  .be-foundations {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;
+    padding-bottom: 48px; border-bottom: 1px solid var(--line); margin-bottom: 48px;
+  }
+  .be-foundations .col h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px;
+  }
+  .be-foundations .caption { margin-top: 14px; font-size: 12px; color: var(--ink-muted); line-height: 1.4; }
+
+  .be-swatches { display: flex; gap: 6px; }
+  .be-swatch { width: 28px; height: 28px; border-radius: 6px; }
+  .be-type-stack { display: flex; flex-direction: column; gap: 4px; }
+  .be-type-stack .display { font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+  .be-type-stack .heading { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; }
+  .be-type-stack .body-t { font-weight: 400; font-size: 13px; }
+  .be-type-stack .cap-t { font-weight: 600; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); }
+  .be-type-stack .accent-it { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--accent); }
+  .be-spacing-bars { display: flex; flex-direction: column; gap: 5px; }
+  .be-spacing-bars .bar-row { display: flex; align-items: center; gap: 10px; }
+  .be-spacing-bars .bar { height: 5px; background: var(--ink); }
+  .be-spacing-bars .label { font-size: 10px; color: var(--ink-muted); }
+  .be-radii { display: flex; gap: 6px; align-items: center; }
+  .be-radii .sq { width: 20px; height: 20px; background: var(--ink); }
+  .be-radii .pill { width: 36px; height: 16px; background: var(--ink); border-radius: 999px; }
+
+  .be-anatomy {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+    padding-bottom: 48px; border-bottom: 1px solid var(--line); margin-bottom: 48px;
+  }
+  .be-anatomy h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent-deep); margin-bottom: 20px;
+  }
+  .be-anatomy .anatomy-block {
+    display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+  }
+  .anatomy-card {
+    border-radius: 12px; background: var(--bg); border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .anatomy-card .img { aspect-ratio: 3/2; background: var(--bg-cream); }
+  .anatomy-card .body { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .anatomy-card .chips { display: flex; gap: 5px; }
+  .anatomy-card .chips .dist { padding: 3px 7px; background: var(--bg-cream); border-radius: 999px; font-size: 8px; font-weight: 600; }
+  .anatomy-card .chips .price { padding: 3px 7px; background: var(--accent); color: #fff; border-radius: 999px; font-size: 8px; font-weight: 600; }
+  .anatomy-card .title { font-size: 12px; font-weight: 600; }
+  .anatomy-card .sub { font-size: 9px; color: var(--ink-muted); }
+  .anatomy-card .ctas { display: flex; gap: 5px; }
+  .anatomy-card .ctas .cct { flex: 1; padding: 6px; background: var(--bg-cream); border-radius: 6px; text-align: center; font-size: 9px; font-weight: 600; }
+  .anatomy-card .ctas .bct { flex: 1; padding: 6px; background: var(--accent); color: #fff; border-radius: 6px; text-align: center; font-size: 9px; font-weight: 600; }
+  .anatomy-labels { display: flex; flex-direction: column; gap: 14px; }
+  .anatomy-labels .label-item h5 { font-size: 13px; margin-bottom: 2px; }
+  .anatomy-labels .label-item p { font-size: 11px; color: var(--ink-muted); line-height: 1.4; }
+
+  .be-variants h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent-deep); margin-bottom: 20px;
+  }
+  .variants-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
+  }
+  .variant-tile {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .variant-tile .card {
+    border: 1px solid var(--line); border-radius: 8px; background: var(--bg);
+    overflow: hidden; position: relative;
+  }
+  .variant-tile .img { aspect-ratio: 8/5; background: var(--bg-cream); }
+  .variant-tile .badge {
+    position: absolute; top: 4px; left: 4px;
+    padding: 1px 4px; border-radius: 3px; font-size: 6px; font-weight: 700;
+    letter-spacing: 0.14em; color: #fff;
+  }
+  .variant-tile .body { padding: 6px; }
+  .variant-tile .body .l1 { height: 4px; width: 75%; background: var(--ink); margin-bottom: 2px; }
+  .variant-tile .body .l2 { height: 3px; width: 50%; background: var(--ink-muted); margin-bottom: 4px; }
+  .variant-tile .body .cta { height: 8px; width: 75%; background: var(--accent); border-radius: 3px; }
+  .variant-tile .label-text {
+    font-size: 10px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.10em; text-align: center;
+  }
+  .variants-caption {
+    margin-top: 18px; font-size: 13px; color: var(--ink-muted); line-height: 1.5;
+  }
+
+  .be-cross {
+    padding-top: 48px; margin-top: 48px; border-top: 1px solid var(--line);
+  }
+  .be-cross h4 {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent-deep); margin-bottom: 20px;
+  }
+  .surface-row {
+    display: flex; gap: 14px; align-items: center;
+  }
+  .cs-card { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .cs-card .frame {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  .cs-card.mobile .frame { width: 140px; height: 200px; }
+  .cs-card.web-grid .frame { width: 180px; height: 160px; }
+  .cs-card.web-detail .frame { width: 360px; height: 160px; }
+  .cs-card .frame .img { aspect-ratio: 16/9; background: var(--bg-cream); }
+  .cs-card .frame .body { padding: 10px; }
+  .cs-card .frame .body .l1 { height: 5px; width: 70%; background: var(--ink); margin-bottom: 4px; }
+  .cs-card .frame .body .l2 { height: 3px; width: 40%; background: var(--ink-muted); margin-bottom: 6px; }
+  .cs-card .frame .body .cta { height: 10px; width: 50%; background: var(--accent); border-radius: 4px; }
+  .cs-card .name { font-size: 11px; font-weight: 600; }
+  .cs-card .sub { font-size: 10px; color: var(--ink-muted); }
+  .surface-row .arrow {
+    font-size: 24px; color: var(--accent); font-weight: 700;
+  }
+  .be-cross .cross-caption {
+    margin-top: 20px; font-size: 13px; color: var(--ink-muted);
+  }
+
+  .be-footer {
+    margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--ink);
+    display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+  }
+  .be-footer .arrow-stat {
+    font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -0.02em;
+  }
+  .be-footer .arrow-stat em {
+    font-family: 'Fraunces', serif; font-style: italic; color: var(--accent);
+  }
+  .be-footer .sep { font-size: 24px; color: var(--ink-muted); }
+  .be-footer .stat .v { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .be-footer .stat .k { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
+  .be-scale-stat {
+    margin-top: 18px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted);
+  }
+
+  /* ─── Surfaces (dark section) ────────────────────────── */
+  .surfaces-section {
+    background: var(--bg-darker); color: #fff; padding: 144px 0;
+    border-bottom: none;
+  }
+  .surfaces-section h2 { color: #fff; }
+  .surfaces-section .section-head .abstract { color: rgba(255,255,255,0.65); }
+  .surfaces-section .section-head .num { color: rgba(255,255,255,0.5); }
+  .surfaces-section .section-head .num .bar { background: rgba(255,255,255,0.4); }
+  .surface-block {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px;
+    align-items: center; padding-bottom: 96px; margin-bottom: 96px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .surface-block:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
+  .surface-block.reverse { grid-template-columns: 1.1fr 1fr; }
+  .surface-block.reverse .visual { order: 2; }
+  .surface-block .visual {
+    background: var(--bg-cream); border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-muted); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    aspect-ratio: 9/19.5; max-width: 320px; margin: 0 auto;
+  }
+  .surface-block.web .visual { aspect-ratio: 16/10; max-width: 100%; border-radius: 14px; }
+  .surface-block .copy .surface-label {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 18px; color: var(--accent); margin-bottom: 12px; font-weight: 500;
+  }
+  .surface-block .copy h3 { color: #fff; font-size: 36px; margin-bottom: 16px; }
+  .surface-block .copy .lead {
+    color: rgba(255,255,255,0.7); font-size: 17px;
+    line-height: 1.55; margin-bottom: 36px; max-width: 480px;
+  }
+  .callouts { display: flex; flex-direction: column; gap: 22px; }
+  .callout {
+    display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start;
+  }
+  .callout .n {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 13px; font-weight: 700; margin-top: 2px;
+  }
+  .callout h5 { color: #fff; font-size: 15px; margin-bottom: 6px; }
+  .callout p { color: rgba(255,255,255,0.62); font-size: 14px; line-height: 1.5; }
+
+  /* ─── Validation ─────────────────────────────────────── */
+  .validation-grid {
+    display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start;
+  }
+  .val-aside {
+    background: var(--bg-cream); border-radius: 18px; padding: 36px;
+  }
+  .val-aside h4 { font-size: 18px; margin-bottom: 14px; }
+  .val-aside p { font-size: 14px; line-height: 1.55; }
+  .val-aside .stats {
+    display: flex; gap: 32px; margin-top: 24px;
+    padding-top: 22px; border-top: 1px solid var(--line-cream);
+  }
+  .val-aside .stats .k { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; font-weight: 700; }
+  .val-aside .stats .v { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+  .findings { display: flex; flex-direction: column; }
+  .finding {
+    display: grid; grid-template-columns: 180px 1fr 180px;
+    gap: 24px; align-items: center;
+    padding: 28px 0; border-top: 1px solid var(--line);
+  }
+  .finding:last-child { border-bottom: 1px solid var(--line); }
+  .finding .arrow-stat {
+    font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500;
+    letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .finding .arrow-stat em { color: var(--accent); font-style: italic; }
+  .finding h4 { font-size: 17px; margin-bottom: 6px; }
+  .finding p { font-size: 14px; color: var(--ink-muted); line-height: 1.5; }
+  .finding .change { text-align: right; font-size: 12px; color: var(--ink-2); }
+  .finding .change strong { display: block; color: var(--good); font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+
+  /* ─── Outcomes (dark tentpole) ───────────────────────── */
+  .outcomes-section { background: var(--ink); color: #fff; padding: 144px 0; border-bottom: none; }
+  .outcomes-section h2 { color: #fff; }
+  .outcomes-section .section-head .abstract { color: rgba(255,255,255,0.65); }
+  .outcomes-section .section-head .num { color: rgba(255,255,255,0.5); }
+  .outcomes-section .section-head .num .bar { background: rgba(255,255,255,0.4); }
+  .outcomes-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .outcome {
+    padding: 56px 32px 56px 0; border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .outcome:last-child { border-right: none; }
+  .outcome .big {
+    font-size: 144px; line-height: 0.92; font-weight: 700;
+    letter-spacing: -0.05em; margin-bottom: 28px; color: #fff;
+  }
+  .outcome .big em {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-weight: 400; color: var(--accent); font-size: 0.55em; letter-spacing: -0.02em;
+  }
+  .outcome h4 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+  .outcome p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.55); }
+
+  .ausactive-strip {
+    margin-top: 48px; padding: 18px 28px;
+    background: rgba(255,255,255,0.04); border-left: 4px solid var(--accent);
+    border-radius: 8px; display: flex; align-items: center; gap: 24px;
+  }
+  .ausactive-strip .trophy { font-size: 22px; }
+  .ausactive-strip .label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); font-weight: 600;
+  }
+  .ausactive-strip .body-t {
+    color: #fff; font-size: 14px; font-weight: 600; line-height: 1.4;
+  }
+  .outcomes-narrative {
+    margin-top: 64px; padding: 36px 40px;
+    background: rgba(255,255,255,0.04); border-left: 4px solid var(--accent);
+    border-radius: 14px;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 22px; line-height: 1.5; color: rgba(255,255,255,0.92);
+    max-width: 900px;
+  }
+
+  /* ─── In the Wild ────────────────────────────────────── */
+  .wild-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  }
+  .ig-wrap {
+    border-radius: 18px; background: var(--bg-cream);
+    overflow: hidden; aspect-ratio: 5/4;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-muted); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; position: relative;
+  }
+  .ig-caption {
+    margin-top: 14px; font-size: 11px; font-weight: 600;
+    color: var(--accent-deep); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .ig-strapline { margin-top: 6px; font-size: 14px; color: var(--ink); font-weight: 500; }
+  .stat-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; gap: 14px;
+  }
+  .stat-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 24px;
+  }
+  .stat-card .k {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px;
+  }
+  .stat-card .v {
+    font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px;
+  }
+  .stat-card .v em {
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: var(--accent); font-weight: 400;
+  }
+  .stat-card .sub { font-size: 12px; color: var(--ink-2); line-height: 1.4; }
+
+  /* ─── Illustrations ──────────────────────────────────── */
+  .ill-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: end; margin-bottom: 56px;
+  }
+  .ill-intro .lead em.accent { font-style: italic; color: var(--accent); }
+  .ill-intro p { font-size: 16px; line-height: 1.55; }
+  .ill-tools {
+    margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  .ill-pullquote {
+    margin-top: 48px; padding: 36px 48px;
+    background: rgba(255,255,255,0.5); border-left: 4px solid var(--accent);
+    border-radius: 0 14px 14px 0;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 22px; line-height: 1.5; color: var(--ink);
+    max-width: 900px;
+  }
+
+  /* ─── Reflection ─────────────────────────────────────── */
+  .reflections {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .reflection {
+    padding: 32px 0 0; border-top: 1px solid var(--ink);
+  }
+  .reflection .num {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 36px; color: var(--accent); margin-bottom: 18px; line-height: 1;
+  }
+  .reflection h4 { font-size: 20px; margin-bottom: 14px; line-height: 1.3; }
+  .reflection p { font-size: 15px; line-height: 1.55; }
+  .bet {
+    margin-top: 96px; padding-top: 48px; border-top: 1px solid var(--ink);
+  }
+  .bet .eb {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 28px;
+  }
+  .bet .eb .bar { width: 36px; height: 1px; background: var(--accent); }
+  .bet .thesis-text {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 36px; line-height: 1.35; color: var(--ink);
+    max-width: 1100px; letter-spacing: -0.014em;
+    margin-bottom: 32px;
+  }
+  .bet .closer {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 22px; line-height: 1.4; color: var(--ink-muted);
+    max-width: 900px;
+  }
+
+  /* ─── Footer ─────────────────────────────────────────── */
+  .footer-section {
+    padding: 96px 0 64px; border-bottom: none;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px;
+    align-items: end; padding-bottom: 48px; border-bottom: 1px solid var(--line);
+  }
+  .footer-grid h2 { font-size: 64px; line-height: 1.05; letter-spacing: -0.03em; }
+  .footer-grid h2 em {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-weight: 400; color: var(--accent);
+  }
+  .contact-list { display: flex; flex-direction: column; }
+  .contact-list a {
+    display: flex; justify-content: space-between; padding: 16px 0;
+    font-size: 16px; text-decoration: none; color: var(--ink);
+    border-top: 1px solid var(--line); font-weight: 500;
+  }
+  .contact-list a:last-child { border-bottom: 1px solid var(--line); }
+  .contact-list a span:last-child { color: var(--ink-muted); }
+  .footer-base {
+    margin-top: 32px; display: flex; justify-content: space-between;
+    color: var(--ink-muted); font-size: 13px;
+  }
+
+  .placeholder {
+    background: repeating-linear-gradient(45deg, var(--bg-cream) 0 12px, var(--line-cream) 12px 24px);
+    color: var(--ink-muted);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 600;
+  }
+
+  /* ─── Image wiring (Figma exports) ───────────────────── */
+  .cover-hero.has-image {
+    grid-template-columns: 1fr;
+    padding: 0; background: transparent;
+  }
+  .cover-hero.has-image img {
+    width: 100%; height: auto; display: block;
+    border-radius: 24px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.10);
+  }
+  .brief-img.has-image {
+    aspect-ratio: auto; padding: 0; overflow: hidden;
+    background: transparent; border-radius: 18px;
+  }
+  .brief-img.has-image img { width: 100%; height: auto; display: block; border-radius: 18px; }
+
+  .decisions-visual.has-image > * { display: none; }
+  .decisions-visual.has-image .visual-image { display: block !important; }
+  .decisions-visual.has-image .decisions-caption { display: block !important; }
+  .decisions-visual .visual-image { display: none; }
+  .decisions-visual .visual-image img {
+    width: 100%; height: auto; display: block; border-radius: 14px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+  }
+
+  .challenge-stats.has-image { position: relative; }
+  .challenge-image {
+    margin-top: 56px; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+  }
+  .challenge-image img { width: 100%; height: auto; display: block; }
+
+  .persona .photo.has-image { overflow: hidden; padding: 0; }
+  .persona .photo.has-image img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
+  .parity-hero.has-image {
+    grid-template-columns: 1fr; padding: 0; background: transparent; gap: 0;
+  }
+  .parity-hero.has-image > *:not(.parity-image) { display: none; }
+  .parity-image img {
+    width: 100%; height: auto; display: block; border-radius: 14px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+  }
+
+  .surfaces-section .surface-block { align-items: center; }
+  .surface-block .visual.has-image {
+    padding: 0; background: transparent; aspect-ratio: auto;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 0; border-radius: 0; overflow: visible;
+  }
+  .surface-block .visual.has-image img {
+    width: 100%; max-width: 100%; max-height: 720px; height: auto;
+    display: block; object-fit: contain;
+    border-radius: 0;
+    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
+  }
+  /* Wider multi-device surface compositions get a bit more room */
+  .surface-block .visual.has-image.wide img { max-height: 560px; }
+
+  .ig-wrap.has-image {
+    padding: 0; aspect-ratio: auto; background: transparent;
+    border-radius: 14px; overflow: hidden;
+  }
+  .ig-wrap.has-image img { width: 100%; height: auto; display: block; }
+
+  .in-the-wild-extra {
+    margin-top: 48px; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.10);
+  }
+  .in-the-wild-extra img { width: 100%; height: auto; display: block; }
+
+  .illustrations-strip {
+    margin-top: 48px; padding: 32px; border-radius: 18px;
+    background: #fff; border: 1px solid var(--line-cream);
+  }
+  .illustrations-strip img { width: 100%; height: auto; display: block; }
+
+  /* ═════════════════════════════════════════════════════════
+     Responsive — tablet (≤ 1100px) + mobile (≤ 768px) + small (≤ 480px)
+     ═════════════════════════════════════════════════════════ */
+
+  /* ─── Tablet (≤ 1100px) ──────────────────────────────── */
+  @media (max-width: 1100px) {
+    :root { --pad-x: 48px; }
+    section { padding: 88px 0; }
+    h1 { font-size: 72px; }
+    h2 { font-size: 48px; }
+    h3 { font-size: 30px; }
+
+    .brief-grid { grid-template-columns: 1fr; gap: 48px; }
+    .decisions-grid { grid-template-columns: 1fr 1fr; }
+    .decisions-body { grid-template-columns: 1fr; gap: 56px; }
+    .challenge-stats { grid-template-columns: 1fr; gap: 40px; }
+    .stat-side { grid-template-columns: 1fr 1fr; }
+    .quote-wall { grid-template-columns: 1fr 1fr; }
+    .quote-wall .quote-card:last-child { grid-column: span 2; }
+    .be-foundations { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .be-anatomy { grid-template-columns: 1fr; gap: 56px; }
+    .validation-grid { grid-template-columns: 1fr; gap: 48px; }
+    .outcomes-grid { gap: 48px; }
+    .wild-grid { grid-template-columns: 1fr; gap: 48px; }
+    .stat-cards { grid-template-columns: 1fr 1fr; }
+    .reflections { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .flow-steps { grid-template-columns: repeat(3, 1fr); }
+    .variants-grid { grid-template-columns: repeat(3, 1fr); }
+    .surface-block,
+    .surface-block.reverse,
+    .surface-block.web.reverse {
+      grid-template-columns: 1fr;
+      gap: 36px; padding: 48px 0;
+    }
+    .surface-block .visual,
+    .surface-block.reverse .visual { order: -1; }
+    .surfaces-section .surface-block { align-items: stretch; }
+    .surface-block .visual.has-image img { max-height: 640px; }
+  }
+
+  /* ─── Mobile (≤ 768px) ───────────────────────────────── */
+  @media (max-width: 768px) {
+    :root {
+      --pad-x: 20px;
+      --content: 100%;
+    }
+    body { font-size: 15px; line-height: 1.55; }
+    p, .lead { font-size: 15px; line-height: 1.6; }
+    .lead { font-size: 17px; }
+
+    h1 { font-size: 38px; letter-spacing: -0.022em; }
+    h2 { font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; }
+    h3 { font-size: 22px; line-height: 1.2; }
+    h4 { font-size: 17px; }
+
+    section { padding: 56px 0; }
+    .section-head { margin-bottom: 40px; }
+    .section-head .abstract { font-size: 16px; margin-top: 18px; }
+    .section-head .num { font-size: 11px; margin-bottom: 18px; }
+
+    /* Verdict bar — wrap pills onto multiple lines */
+    .verdict-bar {
+      padding: 12px 20px; gap: 8px 14px; flex-wrap: wrap;
+      justify-content: flex-start; font-size: 10px; letter-spacing: 0.12em;
+    }
+    .verdict-bar .sep { display: none; }
+    .verdict-bar > span { display: inline-flex; align-items: center; }
+
+    /* Cover */
+    .cover { padding: 48px 0 32px; }
+    .cover-eyebrow { font-size: 10px; padding: 6px 12px; margin-bottom: 20px; }
+    .cover-lead { font-size: 17px; margin-top: 8px; }
+    .meta-strip {
+      grid-template-columns: 1fr 1fr; gap: 20px 16px; margin-top: 32px;
+    }
+    .meta-strip .meta { padding: 0; border-right: none; }
+    .meta-strip .meta .val { font-size: 14px; }
+    .cover-hero { margin-top: 48px; padding: 24px; gap: 24px; }
+    .cover-hero.has-image { padding: 0; }
+    .cover-hero.has-image img { border-radius: 14px; }
+    .outcome-strip {
+      grid-template-columns: 1fr 1fr; gap: 0; margin-top: 32px; padding-top: 24px;
+    }
+    .outcome-cell {
+      padding: 18px 14px; border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .outcome-cell:nth-child(2n) { border-right: none; }
+    .outcome-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .outcome-cell .big { font-size: 36px; margin-bottom: 8px; }
+
+    /* Brief */
+    .brief-grid { grid-template-columns: 1fr; gap: 28px; }
+    .brief-body p:first-of-type::first-letter { font-size: 60px; padding: 4px 10px 0 0; }
+    .brief-pullquote { font-size: 17px; padding: 20px; margin-top: 24px; }
+
+    /* Decisions */
+    .decisions-body { grid-template-columns: 1fr; gap: 40px; }
+    .decisions-grid { grid-template-columns: 1fr; gap: 16px; }
+    .decision-card { padding: 22px; }
+    .decisions-thesis { margin-top: 40px; padding: 28px; }
+    .thesis-text { font-size: 22px; }
+    .decisions-visual.has-image .decisions-caption { font-size: 12px; }
+
+    /* Challenge */
+    .challenge-stats { grid-template-columns: 1fr; gap: 32px; }
+    .stat-hero .mega { font-size: 56px; }
+    .stat-side { grid-template-columns: 1fr; gap: 24px; }
+    .stat .num { font-size: 36px; }
+    .challenge-image { margin-top: 36px; border-radius: 14px; }
+
+    /* Research */
+    .quote-wall { grid-template-columns: 1fr; gap: 14px; }
+    .quote-wall .quote-card:last-child { grid-column: auto; }
+    .quote-card { padding: 22px; }
+    .quote-card .quote { font-size: 19px; }
+    .research-footer { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+
+    /* Problem */
+    .problem-section { padding: 64px 0; }
+    .problem-quote { font-size: 24px; line-height: 1.35; }
+    .hmw { padding: 22px; margin-top: 32px; }
+    .hmw p { font-size: 18px; }
+
+    /* Personas */
+    .persona-grid { grid-template-columns: 1fr; gap: 20px; }
+    .persona .body { padding: 24px 22px 26px; }
+    .persona h3 { font-size: 22px; }
+    .persona .age { font-size: 36px; }
+    .persona dl { grid-template-columns: 90px 1fr; column-gap: 14px; row-gap: 12px; }
+    .persona .photo { aspect-ratio: 16/10; }
+
+    /* Flows */
+    .flow-block { padding: 24px; }
+    .flow-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .flow-steps { grid-template-columns: 1fr; gap: 12px; }
+    .flow-step { padding: 16px; }
+
+    /* System */
+    .dim-strip {
+      grid-template-columns: 1fr; gap: 22px;
+      padding: 28px 0;
+    }
+    .dim-chips { flex-wrap: wrap; gap: 10px; }
+    .dim-chip { flex: 1 1 calc(50% - 5px); padding: 16px; }
+    .dim-strip h3 { font-size: 24px; }
+    .parity-head h3 { font-size: 24px; margin-top: 8px; }
+    .parity-hero { padding: 18px; gap: 18px; }
+    .parity-hero.has-image { padding: 0; }
+
+    /* Build Economy */
+    .build-economy { padding: 28px 22px; border-radius: 16px; }
+    .be-head h3 { font-size: 28px; }
+    .be-foundations { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .be-anatomy { grid-template-columns: 1fr; gap: 40px; }
+    .anatomy-block { grid-template-columns: 1fr; gap: 18px; }
+    .variants-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .surface-row { flex-direction: column; align-items: stretch; gap: 18px; }
+    .surface-row .arrow { transform: rotate(90deg); align-self: center; }
+    .be-footer {
+      flex-wrap: wrap; gap: 14px; justify-content: center;
+      padding: 20px; text-align: center;
+    }
+    .be-footer .sep { display: none; }
+    .be-scale-stat { font-size: 11px; padding: 14px 18px; }
+
+    /* Surfaces — stack visual above copy */
+    .surfaces-section { padding: 56px 0; }
+    .surface-block,
+    .surface-block.reverse,
+    .surface-block.web.reverse {
+      grid-template-columns: 1fr !important;
+      gap: 28px; padding: 36px 0; margin-bottom: 0;
+    }
+    .surface-block .visual,
+    .surface-block.reverse .visual {
+      order: -1 !important;
+    }
+    .surface-block .visual.has-image img { max-height: 520px; }
+    .surfaces-section .surface-block { align-items: stretch; }
+    .surface-block .copy h3 { font-size: 24px; }
+    .surface-block .copy .lead { font-size: 16px; }
+    .surface-block .copy .surface-label { font-size: 10px; }
+    .callout { gap: 12px; padding: 14px 0; }
+    .callout .n { width: 28px; height: 28px; font-size: 11px; }
+    .callout h5 { font-size: 14px; }
+    .callout p { font-size: 13.5px; }
+
+    /* Validation */
+    .validation-grid { grid-template-columns: 1fr; gap: 28px; }
+    .val-aside { padding: 24px; }
+    .val-aside .stats { gap: 18px; }
+    .finding { grid-template-columns: 1fr; gap: 8px; padding: 22px; }
+    .finding .arrow-stat { font-size: 24px; }
+    .finding .change {
+      flex-direction: row; align-items: baseline; gap: 8px;
+      border-left: none; padding-left: 0; margin-top: 8px;
+    }
+
+    /* Outcomes */
+    .outcomes-section { padding: 64px 0; }
+    .outcomes-grid { grid-template-columns: 1fr; gap: 32px; }
+    .outcome .big { font-size: 64px; }
+    .ausactive-strip {
+      flex-direction: column; align-items: flex-start; gap: 10px; padding: 22px;
+    }
+    .outcomes-narrative { font-size: 17px; padding: 22px; line-height: 1.55; }
+
+    /* In the Wild */
+    .wild-grid { grid-template-columns: 1fr; gap: 28px; }
+    .stat-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-card { padding: 18px; }
+    .stat-card .v { font-size: 28px; }
+    .in-the-wild-extra { margin-top: 32px; border-radius: 14px; }
+
+    /* Illustrations */
+    .ill-intro { grid-template-columns: 1fr; gap: 20px; }
+    .ill-pullquote { font-size: 18px; line-height: 1.45; padding: 24px; }
+    .illustrations-strip { padding: 16px; margin-top: 32px; }
+
+    /* Reflection */
+    .reflections { grid-template-columns: 1fr; gap: 18px; }
+    .reflection { padding: 24px; }
+    .bet { padding: 28px; margin-top: 32px; }
+    .bet .thesis-text { font-size: 18px; }
+    .bet .closer { font-size: 18px; margin-top: 20px; }
+
+    /* Footer */
+    .footer-section { padding: 56px 0; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .footer-grid h2 { font-size: 36px; }
+    .contact-list a { padding: 14px 0; font-size: 14px; }
+    .footer-base { flex-direction: column; gap: 8px; font-size: 12px; }
+  }
+
+  /* ─── Small mobile (≤ 480px) ─────────────────────────── */
+  @media (max-width: 480px) {
+    :root { --pad-x: 16px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 20px; }
+    .cover-lead { font-size: 16px; }
+    .meta-strip { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
+    .outcome-cell .big { font-size: 30px; }
+    .stat-hero .mega { font-size: 44px; }
+    .stat .num { font-size: 30px; }
+    .outcome .big { font-size: 48px; }
+    .problem-quote { font-size: 20px; }
+    .footer-grid h2 { font-size: 28px; }
+    .be-foundations { grid-template-columns: 1fr; }
+    .variants-grid { grid-template-columns: 1fr; }
+    .stat-cards { grid-template-columns: 1fr; }
+    .dim-chip { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ───── Verdict Bar ───── -->
+  <div class="verdict-bar">
+    <span><span class="live-dot"></span>LIVE SINCE Q2 2025</span>
+    <span class="sep">·</span>
+    <span class="accent">AUSACTIVE FINALIST 2025</span>
+    <span class="sep">·</span>
+    <span>3,500+ COMMUNITY</span>
+    <span class="sep">·</span>
+    <span>4.6 / 5 APP STORE</span>
+  </div>
+
+  <!-- ───── 01 — Cover ───── -->
+  <section class="cover">
+    <div class="wrap">
+      <span class="cover-eyebrow">
+        <span class="dot"></span>
+        CASE STUDY · 2025
+      </span>
+      <h1>Fitness, but with <em>mates.</em></h1>
+      <p class="cover-lead">An Australian fitness marketplace, designed end-to-end across mobile, web app, and website. Shipped in 4 months.</p>
+
+      <div class="meta-strip">
+        <div class="meta">
+          <span class="caption">Role</span>
+          <div class="val">Lead Product Designer</div>
+        </div>
+        <div class="meta">
+          <span class="caption">Timeline</span>
+          <div class="val">4 months · 2024–25</div>
+        </div>
+        <div class="meta">
+          <span class="caption">Team</span>
+          <div class="val">2 eng · 1 PM · 1 designer</div>
+        </div>
+        <div class="meta">
+          <span class="caption">Platforms</span>
+          <div class="val">iOS · Android · Web App · Site</div>
+        </div>
+      </div>
+
+      <div class="cover-hero has-image">
+        <img src="assets/figma/cover-grid.png" alt="Fitness Mates · Mobile App + Web App + Website cover composition" />
+      </div>
+
+      <div class="outcome-strip">
+        <div class="outcome-cell">
+          <div class="big">40<em>%</em></div>
+          <h4>Onboarding completion</h4>
+          <div class="desc">In week 1.</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="big">+32<em>%</em></div>
+          <h4>Web sign-up conversion</h4>
+          <div class="desc">Vs. pre-launch baseline.</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="big">4.6<em>/5</em></div>
+          <h4>App Store rating</h4>
+          <div class="desc">First 6 weeks · n=64.</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="big">🏆</div>
+          <h4>Finalist</h4>
+          <div class="desc">AUSactive National Awards 2025.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 01 / The Brief ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>01 / THE BRIEF</span>
+        <h2>What is <em class="serif">Fitness Mates?</em></h2>
+      </div>
+
+      <div class="brief-grid">
+        <div class="brief-img has-image">
+          <img src="assets/figma/context-grid.png" alt="Australian fitness lifestyle · context grid" />
+        </div>
+        <div class="brief-body">
+          <p>Fitness Mates is an Australia-based fitness marketplace designed to help people discover trainers, join events, and build local fitness communities through a unified digital ecosystem.</p>
+          <p>Founded by former professional rugby league players <strong>Luke Lewis</strong> and <strong>Jeremy Latimore</strong>, the vision for v1 combined marketplace booking with a social layer — connecting fitness through events, messaging, groups, and community-driven discovery. The project spanned mobile app, web platform, and marketing website design, creating a cohesive multi-surface experience for Australia's active fitness community.</p>
+
+          <div class="brief-pullquote">
+            "ClassPass meets Bumble BFF — for Australians who'd rather show up than scroll."
+            <span class="who">— Founder brief, week one</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 02 / Product Leadership ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>02 / PRODUCT LEADERSHIP</span>
+        <h2>Where the product decisions happened.</h2>
+        <p class="abstract">Four months, two engineers, one PM, a founding team with ClassPass-sized ambitions. The work happened in weekly rhythms — and the decisions in four specific rooms.</p>
+      </div>
+
+      <div class="decisions-body">
+        <div class="decisions-grid">
+          <div class="decision-card">
+            <div class="num">01</div>
+            <h4>We cut the vision in half before design started.</h4>
+            <p>Founders' v1 included events, bookings, messaging, groups, friend invites, and a feed. Two engineers and 16 weeks made it impossible. Kickoff was about subtraction.</p>
+            <div class="meta">KICKOFF · WK 0</div>
+          </div>
+          <div class="decision-card">
+            <div class="num">02</div>
+            <h4>We killed the highest-engagement idea.</h4>
+            <p>Founders pushed for swipe-to-match — they'd seen Bumble's numbers. Three women in research called it predatory in a fitness context. A 5-user A/B settled it 5–0.</p>
+            <div class="meta">DESIGN REVIEW · WK 4</div>
+          </div>
+          <div class="decision-card">
+            <div class="num">03</div>
+            <h4>Density beat coverage.</h4>
+            <p>Founders wanted three cities for press. With ~12 trainers in the pipeline, three cities meant empty Discover feeds. One city with workable supply density beat three with none.</p>
+            <div class="meta">DECISION GATE · WK 7</div>
+          </div>
+          <div class="decision-card">
+            <div class="num">04</div>
+            <h4>Timeline beat completeness.</h4>
+            <p>Three weeks out, a founder asked: delay two weeks for a Stripe payouts dashboard? AUSactive nomination window was load-bearing. Dashboard shipped in v1.1 against real data.</p>
+            <div class="meta">DECISION GATE · WK 13</div>
+          </div>
+        </div>
+
+        <div class="decisions-visual has-image">
+          <div class="visual-image">
+            <img src="assets/figma/context-editorial-visuals.png" alt="Working session screenshots — scope, density, onboarding" />
+          </div>
+          <p class="decisions-caption">Documentary evidence — review screens from working sessions.</p>
+        </div>
+      </div>
+
+      <div class="decisions-thesis">
+        <span class="eb"><span class="bar"></span>THE LESSON</span>
+        <div class="thesis-text">The product wasn't built faster. The decisions were.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 03 / The Challenge ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>03 / THE CHALLENGE</span>
+        <h2>A vibrant industry.<br>A fragmented experience.</h2>
+        <p class="abstract">The Australian fitness landscape has no shortage of energy — but its tools haven't caught up. Fitness seekers juggle apps to discover, book, message, and track. Trainers run businesses on Instagram DMs. The community moment never arrives.</p>
+      </div>
+
+      <div class="challenge-stats">
+        <div class="stat-hero">
+          <div class="mega">3–4<em> apps</em></div>
+          <p>An average participant uses to find a class, book it, message the trainer, and remember to show up. We set out to collapse that to one.</p>
+        </div>
+        <div class="stat-side">
+          <div class="stat">
+            <div class="num">$3.2<em>B</em></div>
+            <p>The Australian fitness industry, 2023 — fragmented across gyms, studios, independents, and digital platforms.</p>
+          </div>
+          <div class="stat">
+            <div class="num">0</div>
+            <p>Existing AU products combined social discovery, native booking, and trainer monetization in a single flow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-image">
+        <img src="assets/figma/challenge-mosaic.png" alt="The fragmented landscape — group fitness scene with app chips overlaid" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 04 / Research ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>04 / RESEARCH & INSIGHTS</span>
+        <h2>Real questions, before any deeper definition.</h2>
+        <p class="abstract">The Fitness Mates team had already run their own market research before I joined — interviews, a survey, a competitor sweep. My job was to read the raw data, surface the patterns that mattered for product, and reframe them as the four questions a design could actually be built around.</p>
+      </div>
+
+      <div class="quote-wall">
+        <div class="quote-card">
+          <div class="theme">On staying consistent</div>
+          <div class="quote">"I start strong but lose motivation within a few weeks."</div>
+          <div class="source">Q1 · INTERVIEW RESPONSE</div>
+        </div>
+        <div class="quote-card">
+          <div class="theme">On their existing apps</div>
+          <div class="quote">"Fitbit and Strava feel too data-heavy and not social enough."</div>
+          <div class="source">Q2 · INTERVIEW RESPONSE</div>
+        </div>
+        <div class="quote-card">
+          <div class="theme">On what would help</div>
+          <div class="quote">"Having workout partners with similar goals."</div>
+          <div class="source">Q3 · INTERVIEW RESPONSE</div>
+        </div>
+      </div>
+
+      <div class="research-footer">
+        <div class="methods">METHODS · 8 INTERVIEWS (SYDNEY + MELBOURNE) · 47-RESPONSE SURVEY · 5 COMPETITOR TEARDOWNS · 3 DESIGN PRINCIPLES</div>
+        <div class="provenance">Raw research conducted by the Fitness Mates team and provided as input. Synthesis, theme extraction, and the 3-question reframing are mine.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 05 / Problem (orange tentpole) ───── -->
+  <section class="problem-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num" style="color: rgba(255,255,255,0.7);"><span class="bar" style="background: rgba(255,255,255,0.6);"></span>05 / THE PROBLEM</span>
+        <h2 style="color:#fff;">The single sentence we pinned above the desk.</h2>
+      </div>
+
+      <p class="problem-quote">
+        Most fitness apps focus on <strong>solo tracking</strong> or <strong>hardcore performance</strong>. They overlook the thing that actually keeps people coming back — <strong>each other</strong>.
+      </p>
+
+      <div class="hmw">
+        <div class="label">How might we…</div>
+        <p>build a single product where booking a class <em>is</em> meeting people, and listing a class <em>is</em> getting paid?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 06 / Personas ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>06 / PERSONAS</span>
+        <h2>Sophie wants community.<br>Liam wants consistency.</h2>
+        <p class="abstract">Both are 28. Both have tried — and stopped. The product had to work for the participant who's relocating to a new city and for the engineer whose schedule keeps disrupting his routine.</p>
+      </div>
+
+      <div class="persona-grid">
+        <article class="persona demand">
+          <div class="photo has-image">
+            <img src="assets/figma/persona-sophie.png" alt="Sophie Williams — Marketing Executive, Sydney" />
+            <span class="badge">Demand-side</span>
+          </div>
+          <div class="body">
+            <div class="head-row">
+              <div>
+                <h3>Sophie Williams</h3>
+                <div class="sub">Marketing Executive · Sydney (recently from Brisbane)</div>
+              </div>
+              <div class="age">28</div>
+            </div>
+            <dl>
+              <dt>Personality</dt>
+              <dd>Outgoing, optimistic, community-oriented. Loves exploring new fitness trends.</dd>
+              <dt>Pain points</dt>
+              <dd>Feels less motivated working out alone. Finds existing apps too focused on competition. Misses the community vibe she had in Brisbane.</dd>
+              <dt>Activities</dt>
+              <dd>Pilates, hiking, spin classes.</dd>
+            </dl>
+            <div class="story">
+              <strong>Story</strong>
+              <p>After moving to Sydney from Brisbane, Sophie is rebuilding her social circle. She finds it hard to meet like-minded fitness enthusiasts outside work. She wants a platform that helps her stay consistent while connecting with genuine, friendly people nearby.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="persona supply">
+          <div class="photo has-image">
+            <img src="assets/figma/persona-liam.png" alt="Liam Anderson — Software Engineer, Melbourne" />
+            <span class="badge">Demand-side</span>
+          </div>
+          <div class="body">
+            <div class="head-row">
+              <div>
+                <h3>Liam Anderson</h3>
+                <div class="sub">Software Engineer · Melbourne</div>
+              </div>
+              <div class="age">28</div>
+            </div>
+            <dl>
+              <dt>Personality</dt>
+              <dd>Motivated, analytical, social introvert. Values consistency and progress over noise.</dd>
+              <dt>Pain points</dt>
+              <dd>Finds solo workouts uninspiring. Lacks accountability. Wants to connect with locals who enjoy similar activities.</dd>
+              <dt>Activities</dt>
+              <dd>Running along the Yarra. Weekend bootcamps.</dd>
+            </dl>
+            <div class="story">
+              <strong>Story</strong>
+              <p>Liam works in a tech firm and spends most of his day at a desk. His inconsistent schedule disrupts his routine. He's looking for a way to stay active and meet people with similar goals — without the pressure of competitive gym environments.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 07 / IA & Flows ───── -->
+  <section class="cream">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>07 / IA & FLOWS</span>
+        <h2>Two clocks. Two flows.</h2>
+        <p class="abstract">The product had to feel fast for the participant and complete for the trainer. Each side got a target time the flow had to beat.</p>
+      </div>
+
+      <div class="flow-block">
+        <div class="flow-head">
+          <div>
+            <div class="label-line">FLOW A · PARTICIPANT</div>
+            <h4>Discovery → first booking</h4>
+          </div>
+          <div class="tgt">Target completion<strong>&lt; 60 seconds, ≤ 4 taps</strong></div>
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step"><div class="s-num">1.</div><h5>Open app</h5><p>Geo-permission requested only on first session.</p></div>
+          <div class="flow-step"><div class="s-num">2.</div><h5>Discover feed</h5><p>Distance-first sort, not interest-first. Decision below.</p></div>
+          <div class="flow-step"><div class="s-num">3.</div><h5>Open listing</h5><p>Distance + time + qualification visible above the fold.</p></div>
+          <div class="flow-step"><div class="s-num">4.</div><h5>Book now</h5><p>Single sticky CTA. Apple/Google Pay first.</p></div>
+          <div class="flow-step"><div class="s-num">5.</div><h5>Confirmation</h5><p>Adds to calendar. Triggers Connect prompt.</p></div>
+        </div>
+      </div>
+
+      <div class="flow-block">
+        <div class="flow-head">
+          <div>
+            <div class="label-line">FLOW B · TRAINER</div>
+            <h4>Sign-up → first listing live</h4>
+          </div>
+          <div class="tgt">Target completion<strong>&lt; 5 min, 7 fields</strong></div>
+        </div>
+        <div class="flow-steps">
+          <div class="flow-step"><div class="s-num">1.</div><h5>Sign up</h5><p>Social or email. Account live in seconds. Stripe Connect deferred — we don't ask for payouts until publish.</p></div>
+          <div class="flow-step"><div class="s-num">2.</div><h5>Choose user type</h5><p>Trainer · Studio · Individual. Locks the right onboarding path so we never ask the wrong question.</p></div>
+          <div class="flow-step"><div class="s-num">3.</div><h5>Profile basics</h5><p>Photo, name, three interests. Qualifications and documents move to post-publish.</p></div>
+          <div class="flow-step"><div class="s-num">4.</div><h5>Create listing</h5><p>7 required fields — cut from 14 after beta-trainers told us the flow took too long.</p></div>
+          <div class="flow-step"><div class="s-num">5.</div><h5>Publish + payout</h5><p>Listing live in &lt;5 min. Stripe Connect prompted now, when the trainer's money is on the line.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 08 / The System ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>08 / THE SYSTEM</span>
+        <h2>One product, three dimensions of scope.</h2>
+        <p class="abstract">Designed across three surfaces, two event modalities, and three user types — all on a single design system. Here's the scope at a glance.</p>
+      </div>
+
+      <div class="dim-strip">
+        <div>
+          <div class="label">Dimension i.</div>
+          <h3>Surfaces.</h3>
+          <p>Same features across mobile and web app — built on one design system. The website is a marketing-led funnel that brings users to either app.</p>
+        </div>
+        <div class="dim-chips">
+          <div class="dim-chip"><div class="n">1.</div><h5>Mobile App</h5><div class="sub">iOS · Android</div></div>
+          <div class="dim-chip"><div class="n">2.</div><h5>Web App</h5><div class="sub">Authenticated · Browser</div></div>
+          <div class="dim-chip"><div class="n">3.</div><h5>Website</h5><div class="sub">Marketing · Public</div></div>
+        </div>
+      </div>
+
+      <div class="dim-strip">
+        <div>
+          <div class="label">Dimension ii.</div>
+          <h3>Modalities.</h3>
+          <p>Trainers list either physical or virtual events; participants filter by what they want. The same product handles in-person classes and Zoom sessions through a unified booking flow.</p>
+        </div>
+        <div class="dim-chips">
+          <div class="dim-chip"><div class="n">1.</div><h5>Physical events</h5><div class="sub">Studios · Outdoor · In-person sessions</div></div>
+          <div class="dim-chip"><div class="n">2.</div><h5>Virtual events</h5><div class="sub">Zoom · Live-streamed · Anywhere</div></div>
+        </div>
+      </div>
+
+      <div class="dim-strip">
+        <div>
+          <div class="label">Dimension iii.</div>
+          <h3>Audiences.</h3>
+          <p>A two-sided marketplace with three distinct user types. Each gets their own onboarding, listings, and dashboards — but they all live in the same product.</p>
+        </div>
+        <div class="dim-chips">
+          <div class="dim-chip"><div class="n">1.</div><h5>Participants</h5><div class="sub">Discover · Book · Connect</div></div>
+          <div class="dim-chip"><div class="n">2.</div><h5>Personal Trainers</h5><div class="sub">List · Earn · Build a following</div></div>
+          <div class="dim-chip"><div class="n">3.</div><h5>Studios & Businesses</h5><div class="sub">Brand · Events · Reach</div></div>
+        </div>
+      </div>
+
+      <div class="parity-head" style="margin-top: 96px;">
+        <div class="eb">FEATURE PARITY · MOBILE ↔ WEB APP</div>
+        <h3>Same product, two form factors.</h3>
+        <p>One design system, two devices. The web app uses its larger canvas for grid views and bulk actions, but the underlying components, voice, and brand are identical to the mobile app.</p>
+      </div>
+
+      <div class="parity-hero has-image">
+        <div class="parity-image">
+          <img src="assets/figma/fm03-multidevice.png" alt="Same product, two form factors — Web App and Mobile App composition" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 09 / Build Economy / Design System Proof ───── -->
+  <section>
+    <div class="wrap">
+      <div class="build-economy">
+        <div class="be-head">
+          <div class="eb"><span class="bar"></span>DESIGN SYSTEM PROOF</div>
+          <h3>The build economy.</h3>
+          <p>One source of truth across mobile, web app, and website.</p>
+        </div>
+
+        <div class="be-foundations">
+          <div class="col">
+            <h4>TOKENS · COLOR</h4>
+            <div class="be-swatches">
+              <div class="be-swatch" style="background:#EE782F" title="Primary Orange"></div>
+              <div class="be-swatch" style="background:#25272E" title="SteelBlue"></div>
+              <div class="be-swatch" style="background:#FFF5ED" title="Light Orange"></div>
+              <div class="be-swatch" style="background:#DCDCDC" title="Neutral grey"></div>
+              <div class="be-swatch" style="background:#6C6D6F" title="Secondary Steel"></div>
+              <div class="be-swatch" style="background:#FFFFFF; border:1px solid var(--line)" title="White"></div>
+            </div>
+            <div class="caption">6 semantic colors · 12 surface variants</div>
+          </div>
+          <div class="col">
+            <h4>TOKENS · TYPE</h4>
+            <div class="be-type-stack" style="font-family: 'Poppins', 'Inter', sans-serif;">
+              <span class="display">Display</span>
+              <span class="heading">Heading</span>
+              <span class="body-t">Body</span>
+              <span class="cap-t">Caption</span>
+              <span class="accent-it">Accent — italic</span>
+            </div>
+            <div class="caption">Poppins · 21 styles</div>
+          </div>
+          <div class="col">
+            <h4>TOKENS · SPACING</h4>
+            <div class="be-spacing-bars">
+              <div class="bar-row"><div class="bar" style="width:4px"></div><span class="label">4</span></div>
+              <div class="bar-row"><div class="bar" style="width:8px"></div><span class="label">8</span></div>
+              <div class="bar-row"><div class="bar" style="width:12px"></div><span class="label">12</span></div>
+              <div class="bar-row"><div class="bar" style="width:16px"></div><span class="label">16</span></div>
+              <div class="bar-row"><div class="bar" style="width:24px"></div><span class="label">24</span></div>
+              <div class="bar-row"><div class="bar" style="width:32px"></div><span class="label">32</span></div>
+            </div>
+            <div class="caption">8-step scale · base 4 · powers all auto-layout</div>
+          </div>
+          <div class="col">
+            <h4>TOKENS · RADIUS</h4>
+            <div class="be-radii">
+              <div class="sq" style="border-radius:4px"></div>
+              <div class="sq" style="border-radius:8px"></div>
+              <div class="sq" style="border-radius:12px"></div>
+              <div class="sq" style="border-radius:14px"></div>
+              <div class="sq" style="border-radius:24px"></div>
+              <div class="pill"></div>
+            </div>
+            <div class="caption">5 levels · pill (999) for chips and CTAs</div>
+          </div>
+        </div>
+
+        <div class="be-anatomy">
+          <div>
+            <h4>ANATOMY · LISTING CARD</h4>
+            <div class="anatomy-block">
+              <div class="anatomy-card">
+                <div class="img"></div>
+                <div class="body">
+                  <div class="chips">
+                    <span class="dist">5.2 km</span>
+                    <span class="price">AUD 30</span>
+                  </div>
+                  <div class="title">HIIT Class</div>
+                  <div class="sub">Kristen Murphy · 24 Mar</div>
+                  <div class="ctas">
+                    <span class="cct">Connect</span>
+                    <span class="bct">Book</span>
+                  </div>
+                </div>
+              </div>
+              <div class="anatomy-labels">
+                <div class="label-item"><h5>Image slot</h5><p>ratio 4:3 · radius/14</p></div>
+                <div class="label-item"><h5>Distance + price chips</h5><p>Chip · padding/space-12 · radius/pill</p></div>
+                <div class="label-item"><h5>Title</h5><p>style/heading-h5 · token/ink</p></div>
+                <div class="label-item"><h5>Lister + date row</h5><p>style/body-default · token/ink-muted</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="be-variants">
+            <h4>VARIANTS · 6 OF 12 SHOWN</h4>
+            <div class="variants-grid">
+              <div class="variant-tile">
+                <div class="card"><div class="img"></div><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+                <div class="label-text">Session</div>
+              </div>
+              <div class="variant-tile">
+                <div class="card"><div class="img"></div><span class="badge" style="background:var(--ink)">PKG</span><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+                <div class="label-text">Package</div>
+              </div>
+              <div class="variant-tile">
+                <div class="card"><div class="img"></div><span class="badge" style="background:var(--ink-muted)">TEAM</span><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+                <div class="label-text">Team</div>
+              </div>
+              <div class="variant-tile">
+                <div class="card"><div class="img"></div><span class="badge" style="background:var(--accent)">PHY</span><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+                <div class="label-text">Physical</div>
+              </div>
+              <div class="variant-tile">
+                <div class="card"><div class="img"></div><span class="badge" style="background:#3D6FB5">VIRT</span><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+                <div class="label-text">Virtual</div>
+              </div>
+              <div class="variant-tile">
+                <div class="card"><div class="img"></div><span class="badge" style="background:var(--accent-deep)">PROMO</span><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+                <div class="label-text">Promo</div>
+              </div>
+            </div>
+            <div class="variants-caption">listing.type × listing.modality × listing.state — every combination ships from one component.</div>
+          </div>
+        </div>
+
+        <div class="be-cross">
+          <h4>CROSS-SURFACE PARITY</h4>
+          <div class="surface-row">
+            <div class="cs-card mobile">
+              <div class="frame"><div class="img"></div><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+              <div class="name">Mobile</div>
+              <div class="sub">350 px width</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="cs-card web-grid">
+              <div class="frame"><div class="img"></div><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+              <div class="name">Web App grid</div>
+              <div class="sub">320 px in 3-col</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="cs-card web-detail">
+              <div class="frame"><div class="img"></div><div class="body"><div class="l1"></div><div class="l2"></div><div class="cta"></div></div></div>
+              <div class="name">Web App responsive</div>
+              <div class="sub">350 px width</div>
+            </div>
+          </div>
+          <div class="cross-caption">Same component. Same tokens. Auto-layout handles the rest. +5 interaction states from one variant prop.</div>
+        </div>
+
+        <div class="be-footer">
+          <div class="arrow-stat">12 <em>→</em> 1</div>
+          <span class="sep">·</span>
+          <div class="stat"><div class="v">~8 hrs</div><div class="k">to design + spec</div></div>
+          <span class="sep">·</span>
+          <div class="stat"><div class="v">1 PR</div><div class="k">to update all surfaces</div></div>
+        </div>
+        <div class="be-scale-stat">12 tokens · 47 components · 218 variants · 3 surfaces · 1 source of truth</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 09 / Surfaces (dark) ───── -->
+  <section class="surfaces-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>09 / THE SURFACES</span>
+        <h2>Where the strategy meets the pixel.</h2>
+        <p class="abstract">Six surfaces did most of the work, organized around four sections: Events, Connect, Promotions, Profile. Each surface is annotated with the design decision behind it — not what it does, but why.</p>
+      </div>
+
+      <div class="surface-block reverse">
+        <div class="visual has-image"><img src="assets/figma/surface-web-app.png" alt="Web App dashboard — same features, bigger canvas" /></div>
+        <div class="copy">
+          <div class="surface-label">Web App · Dashboard</div>
+          <h3>Same features, bigger canvas.</h3>
+          <p class="lead">Where the mobile app shows one card per scroll, the web app shows eight. Where mobile gives you a single number, the web app charts the trend.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>Three-column mate grid</h5><p>The same Connect logic from mobile — laid out across a wider canvas without forcing scroll. Distance, mutuals, and shared interests sit in a glance.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Earnings + bookings on one screen</h5><p>Bulk actions and trend lines for trainers who manage their week at a desk, not a phone.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>One design system, two form factors</h5><p>Cards, tokens, voice — identical to mobile. The web canvas just shows more of them at once.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="surface-block">
+        <div class="visual has-image"><img src="assets/figma/surface-discover.png" alt="Discover — Mobile + Web App" /></div>
+        <div class="copy">
+          <div class="surface-label">Mobile + Web App · Discover</div>
+          <h3>Discover</h3>
+          <p class="lead">The participant's home. Distance-first, low-friction browse → book.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>Physical / Virtual as the modality switch</h5><p>Two pills sit above all other filters because modality is the most decisive disqualifier — no one wants to discover a Zoom yoga class when they're looking for an outdoor run.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Distance + price chips on every card</h5><p>Research showed distance and time were top-2 deciders. Price came fourth — present but secondary.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>Map view as a toggle, not the default</h5><p>73% of users in usability testing opened list view first. Map became a deliberate move.</p></div></div>
+            <div class="callout"><div class="n">iv</div><div><h5>Single floating create-listing CTA</h5><p>Trainers and participants share Discover. The "+" surfaces only when signed in as a trainer.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="surface-block reverse">
+        <div class="copy">
+          <div class="surface-label">Mobile + Web App · Listing detail</div>
+          <h3>Listing detail</h3>
+          <p class="lead">The booking moment. Trust above the fold, payment friction kept low.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>Physical / Virtual modality + eligibility chips up top</h5><p>"Physical" or "Virtual" badge surfaces immediately, then "Designed for", "Age required", "Gender allowed" — the four filters most likely to disqualify a user before they scroll.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Available dates as a bookable grid</h5><p>Trainer publishes 40+ recurring slots without scroll fatigue. Each cell carries spots-remaining as scarcity nudge.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>Trust-building tail: reviews + know the lister</h5><p>Reviews and lister bio sit close to the booking CTA — exactly where hesitation peaks for stranger-trainer bookings.</p></div></div>
+            <div class="callout"><div class="n">iv</div><div><h5>Sticky bottom CTA · price + book in one bar</h5><p>Resolves a usability finding where 3/5 testers missed an inline CTA mid-page. Price stays anchored next to the action.</p></div></div>
+          </div>
+        </div>
+        <div class="visual has-image"><img src="assets/figma/surface-listing-detail.png" alt="Listing detail — Mobile + Web App" /></div>
+      </div>
+
+      <div class="surface-block">
+        <div class="visual has-image"><img src="assets/figma/surface-trainer-profile.png" alt="Trainer profile and earnings — Mobile + Web App" /></div>
+        <div class="copy">
+          <div class="surface-label">Mobile + Web App · Trainer profile & earnings</div>
+          <h3>Trainer profile &amp; earnings</h3>
+          <p class="lead">The supply-side home. Built around the one number a trainer wants to see first.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>Total earnings up top, not buried in a tab</h5><p>The number a trainer opens the app to check. Drives session-add behavior more than any nudge we tested.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Listings, bookings, team — all one tap deep</h5><p>The five highest-frequency trainer tasks sit on the first screen. No nested settings page for what they do every week.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>Stripe + bank linking grouped, not scattered</h5><p>"Wallet management" and "Bank account & Stripe" sit adjacent. Money in, money out, in one mental model.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="surface-block reverse">
+        <div class="copy">
+          <div class="surface-label">Mobile + Web App · Event creation & listing flow</div>
+          <h3>Creating listings</h3>
+          <p class="lead">The listing flow was designed to help trainers and businesses publish events quickly while keeping information structured and easy to trust.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>Flexible creator types</h5><p>Users can create listings as a trainer, business, or individual — supporting different kinds of fitness experiences within one system.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Visual-first event setup</h5><p>Listing images appear early in the flow to quickly communicate the event's energy and training style.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>Structured event details</h5><p>Event type, venue, interests, scheduling, and participation preferences are grouped into clear, manageable steps.</p></div></div>
+            <div class="callout"><div class="n">iv</div><div><h5>Built for recurring fitness routines</h5><p>Recurring event support helps trainers manage ongoing classes instead of repeatedly creating one-time sessions.</p></div></div>
+          </div>
+        </div>
+        <div class="visual has-image"><img src="assets/figma/surface-creating-listings.png" alt="Creating listings — Mobile + Web App" /></div>
+      </div>
+
+      <div class="surface-block">
+        <div class="visual has-image"><img src="assets/figma/surface-connect-community.png" alt="Connect and community — Mobile + Web App" /></div>
+        <div class="copy">
+          <div class="surface-label">Mobile + Web App · Social discovery & community</div>
+          <h3>Connect &amp; community</h3>
+          <p class="lead">The social layer designed to make fitness feel less individual — and more accountable, local, and consistent.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>Interest-first discovery instead of random matching</h5><p>Users discover fitness mates through shared goals, workout styles, and nearby activity — creating more relevant connections than generic social feeds.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Trainer ↔ client communication built into the product</h5><p>Messaging removes the gap between discovery and coordination. Scheduling, follow-ups, motivation, and session planning happen in one continuous flow.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>Community designed around participation, not scrolling</h5><p>The experience prioritises showing up over passive engagement. Nearby mates, mutual interests, and lightweight interaction patterns encourage real-world fitness participation.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="surface-block web reverse">
+        <div class="copy">
+          <div class="surface-label">Website · Get fit, get connected.</div>
+          <h3>Get fit, get connected.</h3>
+          <p class="lead">A marketing-led web platform. Designed for sign-up conversion, not feature parity with the app.</p>
+          <div class="callouts">
+            <div class="callout"><div class="n">i</div><div><h5>One headline, two paths</h5><p>"Earn money as a lister" or "Browse &amp; book activities." The web hero collapses every visitor into one of two intents.</p></div></div>
+            <div class="callout"><div class="n">ii</div><div><h5>Filters mirror the app, but lighter</h5><p>Sessions / Package / Team chips repeat from mobile, so a web→app handoff feels native. Discovery on web is a teaser.</p></div></div>
+            <div class="callout"><div class="n">iii</div><div><h5>Listings grid for SEO, not browsing</h5><p>Crawlable listing cards drive organic acquisition. Web's job in v1 is to feed the app, not replace it.</p></div></div>
+          </div>
+        </div>
+        <div class="visual has-image"><img src="assets/figma/surface-website.png" alt="Get fit, get connected — Website" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 10 / Validation ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>10 / VALIDATION</span>
+        <h2>How I knew it was working.</h2>
+        <p class="abstract">Five unmoderated tests, three moderated trainer sessions in their own studios, one cohort of pre-launch beta users. Three findings changed the product before launch.</p>
+      </div>
+
+      <div class="validation-grid">
+        <div class="val-aside">
+          <h4>Test setup + pre-launch beta</h4>
+          <p>Eight usability sessions in week 9, plus a 2-week pre-launch beta with the 12 Sydney trainers we'd onboarded as cold-start supply. Two trainers churned in the first week — both said the listing-creation flow was too long. That's what triggered the 14-field → 7-field cut. Both came back after the simplification.</p>
+          <div class="stats">
+            <div><div class="k">SESSIONS</div><div class="v">8</div></div>
+            <div><div class="k">TASKS</div><div class="v">12</div></div>
+            <div><div class="k">FIXES</div><div class="v">3</div></div>
+          </div>
+        </div>
+
+        <div class="findings">
+          <div class="finding">
+            <div class="arrow-stat">60% <em>→</em> 100%</div>
+            <div>
+              <h4>Booking flow completion</h4>
+              <p>The Connect CTA on Trainer Profile sat below the fold on iPhone SE. Moved to sticky bottom — re-test went to 100%.</p>
+            </div>
+            <div class="change"><strong>+40 pp</strong>completion rate</div>
+          </div>
+          <div class="finding">
+            <div class="arrow-stat">40% <em>→</em> 12%</div>
+            <div>
+              <h4>Listing-creation abandonment</h4>
+              <p>Initial 14-field form lost users at field 9. Cut to 7 required + 7 optional with progressive disclosure post-publish.</p>
+            </div>
+            <div class="change"><strong>−28 pp</strong>abandonment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 11 / Outcomes (dark tentpole) ───── -->
+  <section class="outcomes-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>11 / OUTCOMES</span>
+        <h2>Four weeks after launch.</h2>
+        <p class="abstract">The numbers below are from Mixpanel and GA4, measured in the four weeks following public launch. Source notes are on every metric — no senior portfolio bluffs numbers.</p>
+      </div>
+
+      <div class="outcomes-grid">
+        <div class="outcome">
+          <div class="big">40<em>%</em></div>
+          <h4>Onboarding completion</h4>
+          <p>Share of new sign-ups who complete profile + first listing or first booking action within 24 hours. Source: Mixpanel funnel, week 1–4.</p>
+        </div>
+        <div class="outcome">
+          <div class="big">+32<em>%</em></div>
+          <h4>Web sign-up conversion</h4>
+          <p>Versus the pre-launch landing page baseline. Source: GA4 + Mixpanel attribution, matched cohort.</p>
+        </div>
+        <div class="outcome">
+          <div class="big">4.6<em>/5</em></div>
+          <h4>App Store rating</h4>
+          <p>First six weeks. n=64 reviews. Top theme: "easy to find a class with someone."</p>
+        </div>
+      </div>
+
+      <div class="ausactive-strip">
+        <span class="trophy">🏆</span>
+        <span class="label">AUSACTIVE NATIONAL AWARDS · 2025</span>
+        <span class="body-t">Finalist — Most Innovative + Best Technology Supplier of the Year.</span>
+      </div>
+
+      <div class="outcomes-narrative">
+        Beyond the numbers, the strongest signal was qualitative: within the first month, three Sydney trainers asked — unprompted — whether they could move their entire client roster onto Fitness Mates. That told us we'd built something a power user would champion, not just use.
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 12 / In the Wild ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>12 / IN THE WILD</span>
+        <h2>Beyond the screens.</h2>
+        <p class="abstract">A live App Store presence, an industry award nomination, a growing community on Instagram, and partnerships with the events that define Australian fitness culture. The work didn't end at the prototype.</p>
+      </div>
+
+      <div class="wild-grid">
+        <div>
+          <div class="ig-wrap has-image">
+            <img src="assets/figma/in-the-wild-1.png" alt="@fitnessmatesau · Instagram grid + post highlights" />
+          </div>
+          <div class="ig-caption">@FITNESSMATESAU</div>
+          <div class="ig-strapline">A growing audience and a recognisable brand voice in the wild.</div>
+        </div>
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="k">INSTAGRAM</div>
+            <div class="v">3,537</div>
+            <div class="sub">@fitnessmatesau followers · 214 posts and counting</div>
+          </div>
+          <div class="stat-card">
+            <div class="k">DISTRIBUTION</div>
+            <div class="v"><em>2</em> stores</div>
+            <div class="sub">Live on Apple App Store + Google Play</div>
+          </div>
+          <div class="stat-card">
+            <div class="k">INDUSTRY RECOGNITION</div>
+            <div class="v">Finalist</div>
+            <div class="sub">AUSactive National Awards 2025 · Most Innovative + Best Tech</div>
+          </div>
+          <div class="stat-card">
+            <div class="k">REAL-WORLD ACTIVATIONS</div>
+            <div class="v">5<em>+</em></div>
+            <div class="sub">Hyrox · AUSactive · Backyard Ultra · AFL · Penrith Unite</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="in-the-wild-extra">
+        <img src="assets/figma/in-the-wild-2.png" alt="Real-world activations · Hyrox, AUSactive, AFL, Backyard Ultra" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── 13 / Illustrations ───── -->
+  <section class="cream">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>13 / BRAND ILLUSTRATIONS</span>
+        <h2>Hand-drawn warmth,<br>deliberately not stock.</h2>
+        <p class="abstract">Australian fitness culture is casual, outdoorsy, and unpretentious. Stock photography felt corporate. I designed a custom illustration set for the website banners, in-app moments, and social — anchored on the brand's warm orange and a single line-weight that reads at any size.</p>
+      </div>
+
+      <div class="ill-intro">
+        <div>
+          <p class="lead">The illustration system runs across <em class="accent">six web banners</em>, three in-app empty states, and a launch campaign of social tiles. One palette, one stroke weight, infinite combinations.</p>
+        </div>
+        <div>
+          <p>Designed the marketing material of the brand — bus stop banners, gym campaign posters, promotional social content, and event activations across the launch.</p>
+        </div>
+      </div>
+
+      <div class="illustrations-strip">
+        <img src="assets/figma/illustrations.png" alt="Brand illustration system — banners, in-app moments, social tiles" />
+      </div>
+
+      <div class="ill-pullquote">
+        "Stock photography would have shipped the deadline. The illustration set is what made the brand feel like Australia — and what trainers screenshotted when they shared the launch."
+      </div>
+
+      <div class="ill-tools">TOOLS · FIGMA · ILLUSTRATOR · PHOTOSHOP · LOTTIE</div>
+    </div>
+  </section>
+
+  <!-- ───── 14 / Reflection ───── -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num"><span class="bar"></span>14 / WHAT I'D DO DIFFERENTLY</span>
+        <h2>Two regrets and a bet.</h2>
+        <p class="abstract">Every project ships with regret. Two belong to v1. The third question is what v2 has to answer.</p>
+      </div>
+
+      <div class="reflections">
+        <div class="reflection">
+          <div class="num">1.</div>
+          <h4>Push back harder on listing-flow length.</h4>
+          <p>We optimized for completeness. We should have optimized for time-to-first-listing. Even at seven fields, 12% of trainers abandoned. v2 should be three fields and a "complete later" prompt.</p>
+        </div>
+        <div class="reflection">
+          <div class="num">2.</div>
+          <h4>Start the design system on day one.</h4>
+          <p>I built components reactively, screen by screen. By month three I had to refactor 40+ components. Two days of token + primitive setup at the start would have saved two weeks of cleanup at the end.</p>
+        </div>
+      </div>
+
+      <div class="bet">
+        <span class="eb"><span class="bar"></span>THE BET</span>
+        <div class="thesis-text">v1 optimised for trainer activation — the harder side of any marketplace, and the data confirms it worked. v2 has to be consumer-side. If retention doesn't compound by month 6, the trainers we worked so hard to acquire start to churn. Empty classes are worse than no classes.</div>
+        <div class="closer">Fitness products don't fail because users lack motivation. They fail because consistency is harder to design than engagement.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Footer ───── -->
+  <section class="footer-section">
+    <div class="wrap">
+      <div class="footer-grid">
+        <h2>Want to <em>work together?</em></h2>
+        <div class="contact-list">
+          <a href="#"><span>Email</span><span>hello@yourdomain.com →</span></a>
+          <a href="#"><span>LinkedIn</span><span>/in/your-handle →</span></a>
+          <a href="#"><span>Next case study</span><span>Project Two →</span></a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2025 — Designer Name</span>
+        <span>Fitness Mates · Case Study · Designed in Sydney</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
